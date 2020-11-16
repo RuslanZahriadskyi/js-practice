@@ -24,49 +24,40 @@
 // Порядок элементов typeв каждом бункере должен быть таким же, как порядок их соответствующих объектов в списке ввода.
 
 function recycle(array) {
-  const PAPER = "paper";
-  const GLASS = "glass";
-  const ORGANIC = "organic";
-  const PLASTIC = "plastic";
+  class Array {
+    constructor(getNewArray, material) {
+      this.array = getNewArray;
+      this.material = material;
+    }
+
+    findByMaterial() {
+      const findMaterial = this.array
+        .filter((el) => {
+          return (
+            el.material === this.material || el.secondMaterial === this.material
+          );
+        })
+        .map((el) => {
+          return el.type;
+        });
+
+      return findMaterial;
+    }
+  }
 
   let output = [];
 
-  const findPaper = array
-    .filter((el) => {
-      return el.material === PAPER || el.secondMaterial === PAPER;
-    })
-    .map((el) => {
-      return el.type;
-    });
+  const paper = new Array(array, "paper");
+  const glass = new Array(array, "glass");
+  const organic = new Array(array, "organic");
+  const plastic = new Array(array, "plastic");
 
-  const findGlass = array
-    .filter((el) => {
-      return el.material === GLASS || el.secondMaterial === GLASS;
-    })
-    .map((el) => {
-      return el.type;
-    });
-
-  const findOrganic = array
-    .filter((el) => {
-      return el.material === ORGANIC || el.secondMaterial === ORGANIC;
-    })
-    .map((el) => {
-      return el.type;
-    });
-
-  const findPlastic = array
-    .filter((el) => {
-      return el.material === PLASTIC || el.secondMaterial === PLASTIC;
-    })
-    .map((el) => {
-      return el.type;
-    });
-
-  output.push(findPaper);
-  output.push(findGlass);
-  output.push(findOrganic);
-  output.push(findPlastic);
+  output.push(
+    paper.findByMaterial(),
+    glass.findByMaterial(),
+    organic.findByMaterial(),
+    plastic.findByMaterial()
+  );
 
   return output;
 }
@@ -82,5 +73,53 @@ const input = [
   { type: "amazon box", material: "paper" },
   { type: "beer bottle", material: "glass", secondMaterial: "paper" },
 ];
+
+// function recycle(array) {
+//   const PAPER = "paper";
+//   const GLASS = "glass";
+//   const ORGANIC = "organic";
+//   const PLASTIC = "plastic";
+
+//   let output = [];
+
+//   const findPaper = array
+//     .filter((el) => {
+//       return el.material === PAPER || el.secondMaterial === PAPER;
+//     })
+//     .map((el) => {
+//       return el.type;
+//     });
+
+//   const findGlass = array
+//     .filter((el) => {
+//       return el.material === GLASS || el.secondMaterial === GLASS;
+//     })
+//     .map((el) => {
+//       return el.type;
+//     });
+
+//   const findOrganic = array
+//     .filter((el) => {
+//       return el.material === ORGANIC || el.secondMaterial === ORGANIC;
+//     })
+//     .map((el) => {
+//       return el.type;
+//     });
+
+//   const findPlastic = array
+//     .filter((el) => {
+//       return el.material === PLASTIC || el.secondMaterial === PLASTIC;
+//     })
+//     .map((el) => {
+//       return el.type;
+//     });
+
+//   output.push(findPaper);
+//   output.push(findGlass);
+//   output.push(findOrganic);
+//   output.push(findPlastic);
+
+//   return output;
+// }
 
 console.log(recycle(input));
