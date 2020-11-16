@@ -28,7 +28,12 @@
 // В основе этой игры в слова лежит контент на MIT OpenCourseWare (Введение в информатику).
 
 function wordscore(word) {
-  console.log(word);
+  let value = 0;
+  word.split("").forEach((el) => {
+    value += valueForLetter[el];
+  });
+
+  return word.length === 7 ? value * word.length + 50 : value * word.length;
 }
 
 const valueForLetter = {
@@ -60,4 +65,4 @@ const valueForLetter = {
   z: 10,
 };
 
-wordscore(test);
+console.log(wordscore("deceive"));
