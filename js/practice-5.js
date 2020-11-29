@@ -1,10 +1,15 @@
+// https://www.codewars.com/kata/5722fd3ab7162a3a4500031f/solutions/javascript/me/best_practice
+
 function whatNumberIsIt(n) {
-  let num = new Number(n);
-  // num.EPSILON(n);
-  // console.dir(typeof Number.objects);
-  console.dir(num.constructor);
-  // console.dir(Number(n).constructor);
-  // return `Input number is ${num}`;
+  if (n == Number.MAX_VALUE) return "Input number is Number.MAX_VALUE";
+  if (n == Number.POSITIVE_INFINITY)
+    return "Input number is Number.POSITIVE_INFINITY";
+  if (n == Number.MIN_VALUE) return "Input number is Number.MIN_VALUE";
+  if (n == Number.NEGATIVE_INFINITY)
+    return "Input number is Number.NEGATIVE_INFINITY";
+  if (isNaN(n)) return "Input number is Number.NaN";
+
+  return "Input number is " + n;
 }
 
 console.log(whatNumberIsIt(1 / 0));

@@ -70,8 +70,8 @@ function addArrays(array1, array2) {
   return arrayOfNumbers.map((el) => Number(el));
 }
 
-// console.log(addArrays([6, 7]));
+console.log(addArrays([6, 7], [NaN]));
 
-// console.log(addArrays([3, 2, 6, 6], [-7, 2, 2, 8]));
+console.log(addArrays([3, 2, 6, 6], [-7, 2, 2, 8]));
 
 console.log(addArrays([NaN], [NaN]));
